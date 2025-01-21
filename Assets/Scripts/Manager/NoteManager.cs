@@ -59,5 +59,5 @@ public class NoteManager : MonoBehaviour
         Debug.Log($"노트 스폰 at {noteData.spawnPos}");
     }
 
-    public void GetNoteIndex() { return currentNoteIndex; }
+    public int GetNoteIndex() { return currentNoteIndex; }
 }

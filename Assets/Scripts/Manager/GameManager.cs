@@ -65,6 +65,10 @@ public class GameManager : MonoBehaviour
         return targeTime - inputTimer;
     }
 
+    public float GetTempo()
+    {
+        return tempo;
+    }
     public void StartTimer()
     {
         Debug.Log("노래 시작합니다");
