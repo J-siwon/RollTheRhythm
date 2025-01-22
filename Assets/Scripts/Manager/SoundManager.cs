@@ -6,6 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource bgmAudioSource;
 
+    public float correction = 0.2f;
+
     public static SoundManager instance;
     private void Awake()
     {
@@ -30,15 +32,14 @@ public class SoundManager : MonoBehaviour
         Destroy(audioSource, clip.length);
     }
 
-    private void Start()
+    public void StartBGMAndTimer()
     {
-        //2초 뒤 노래 시작
-        StartCoroutine(StartBGMAndTimer());
+        StartCoroutine(BGMAndTimerCourutine());
     }
-    private IEnumerator StartBGMAndTimer()
+    private IEnumerator BGMAndTimerCourutine()
     {
         // 3초 대기
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f + correction);
 
         // 3초 뒤에 BGM 재생
         bgmAudioSource.Play();
