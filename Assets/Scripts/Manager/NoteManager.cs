@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NoteManager : MonoBehaviour
 {
-    public static NoteManager Instance;  // 싱글톤(선택사항)
 
     [System.Serializable]
     public struct NoteData
@@ -18,6 +17,7 @@ public class NoteManager : MonoBehaviour
     public NoteData[] noteDatas;         // 에디터에서 셋업할 노트 데이터
     private int currentNoteIndex = 0;    // 현재 스폰해야 할 노트의 인덱스
 
+    public static NoteManager Instance;  // 싱글톤
     void Awake()
     {
         // 싱글톤 패턴

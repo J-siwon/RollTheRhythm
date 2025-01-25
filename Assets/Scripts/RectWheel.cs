@@ -18,9 +18,6 @@ public class RectWheel : MonoBehaviour
 
     private float timeElapsed = 0f;    // 이번 0°→90° 구간에서 흐른 시간
 
-    private float startAngle = 0f;     // 시작 각도
-    private float endAngle = 90f;      // 끝 각도
-
     float rotationspeed = 0f;
 
     bool isstarted = false;
@@ -29,8 +26,9 @@ public class RectWheel : MonoBehaviour
     {
         tempo = GameManager.instance.GetTempo();
         rotationspeed = 60f / tempo;
+        SoundManager.instance.StartBGMAndTimer();
     }
-    
+
     void Update()
     {
         if (timeElapsed < rotationspeed)
@@ -59,7 +57,6 @@ public class RectWheel : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Round(transform.eulerAngles.z));
             if (!isstarted)
             {
-                SoundManager.instance.StartBGMAndTimer();
                 isstarted = true;
             }
             timeElapsed = 0;

@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource bgmAudioSource;
 
-    public float correction = 0.2f;
+    public float correction = 0.3f;
 
     public static SoundManager instance;
     private void Awake()
@@ -38,10 +38,11 @@ public class SoundManager : MonoBehaviour
     }
     private IEnumerator BGMAndTimerCourutine()
     {
-        // 3초 대기
-        yield return new WaitForSeconds(1f + correction);
+        float tempo = GameManager.instance.GetTempo();
+        // 4박자 대기
+        yield return new WaitForSeconds(60f / tempo * 4f + correction);
 
-        // 3초 뒤에 BGM 재생
+        // 4박자 뒤에 BGM 재생
         bgmAudioSource.Play();
 
         // GameManager의 타이머 시작 메서드 호출

@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     float timeDifference = 0f;
     bool isStart = false;
 
-    float[] note = new float[] { 4f, 4f, 4f, 4f, 2f, 2f, 2f, 2f, 2f, 2f, 2f, 2f , 2f, 2f, 2f, 2f, 2f, 2f, 2f, 2f };
     int noteindex = 0;
 
     public static GameManager instance;
@@ -27,10 +26,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    /*Fixed Update 
+    /*Update 
       1. 타이머 시간 가기
-     */
-    private void FixedUpdate()
+      2. 입력받기
+    */
+    private void Update()
     {
         if (isStart)
         {
@@ -44,20 +44,22 @@ public class GameManager : MonoBehaviour
             nextNoteTimer = 0f;
             GetNextTargetTime();
         }
-    }
 
-    /*
-     *Update
-     *입력 받기
-     */
-    private void Update()
-    {
         if (Input.anyKeyDown)
         {
             timeDifference = GetTimeDifference();
             Debug.Log(timeDifference);
             inputTimer = nextNoteTimer;
         }
+    }
+
+    /*
+     *Update
+     *입력 받기
+     */
+    private void FixedUpdate()
+    {
+
     }
 
     float GetTimeDifference()
@@ -69,6 +71,7 @@ public class GameManager : MonoBehaviour
     {
         return tempo;
     }
+
     public void StartTimer()
     {
         Debug.Log("노래 시작합니다");
@@ -80,7 +83,8 @@ public class GameManager : MonoBehaviour
     void GetNextTargetTime()
     {
         noteindex++;
-        nextNoteBeat = note[noteindex];
+        //nextNoteBeat = note[noteindex];
+        nextNoteBeat = 2f;
         targeTime = 60f / tempo * nextNoteBeat;
     }
 
