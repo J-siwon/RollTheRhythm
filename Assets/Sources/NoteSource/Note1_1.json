@@ -1,0 +1,88 @@
+{
+  "songName": "1-1",
+  "bpm": 100,
+  "offset": 0.2,
+  "notes": [
+    {
+      "time": 4,
+      "spawnPos": {
+        "x": 1.0,
+        "y": -0.6
+      },
+      "noteType": 0,
+      "speed": 1.0
+    },
+    {
+      "time": 8,
+      "spawnPos": {
+        "x": 2.0,
+        "y": -0.6
+      },
+      "noteType": 0,
+      "speed": 1.0
+    },
+    {
+      "time": 12,
+      "spawnPos": {
+        "x": 3.0,
+        "y": -0.6
+      },
+      "noteType": 0,
+      "speed": 1.0
+    },
+    {
+      "time": 16,
+      "spawnPos": {
+        "x": 4.0,
+        "y": -0.6
+      },
+      "noteType": 0,
+      "speed": 1.0
+    },
+    {
+      "time": 20,
+      "spawnPos": {
+        "x": 5.0,
+        "y": -0.6
+      },
+      "noteType": 0,
+      "speed": 1.0
+    },
+    {
+      "time": 24,
+      "spawnPos": {
+        "x": 6.0,
+        "y": -0.6
+      },
+      "noteType": 0,
+      "speed": 1.0
+    },
+    {
+      "time": 28,
+      "spawnPos": {
+        "x": 7.0,
+        "y": -0.6
+      },
+      "noteType": 0,
+      "speed": 1.0
+    },
+    {
+      "time": 32,
+      "spawnPos": {
+        "x": 8.0,
+        "y": -0.6
+      },
+      "noteType": 0,
+      "speed": 1.0
+    },
+    {
+      "time": 36,
+      "spawnPos": {
+        "x": 10.0,
+        "y": -0.6
+      },
+      "noteType": 0,
+      "speed": 1.0
+    }
+  ]
+}
