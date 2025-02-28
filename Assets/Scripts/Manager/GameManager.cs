@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    float tempo = 100f; //BPM¿∏∑Œ 1∫–¥Á π⁄¿⁄ ºˆ 
-    float targeTime = 60f / 100f * 3f;
-    float inputTimer = 0f;
-    float nextNoteTimer = 0f;
-    float nextNoteBeat= 4f; //¥Ÿ¿Ω ≥Î∆Æ±Ó¡ˆ π⁄¿⁄¿« ∞≥ºˆ( 1/4π⁄¿⁄∏È 4∞≥ 1/8π⁄¿⁄∏È 2∞≥)
-    float timeDifference = 0f;
-    bool isStart = false;
+    float tempo = 100f; //BPMÏúºÎ°ú 1Î∂ÑÎãπ Î∞ïÏûê Ïàò 
+
+    public GameObject wheel;
 
     int noteindex = 0;
 
@@ -27,65 +23,25 @@ public class GameManager : MonoBehaviour
     }
 
     /*Update 
-      1. ≈∏¿Ã∏” Ω√∞£ ∞°±‚
-      2. ¿‘∑¬πﬁ±‚
+      1. ÌÉÄÏù¥Î®∏ ÏãúÍ∞Ñ Í∞ÄÍ∏∞
+      2. ÏûÖÎ†•Î∞õÍ∏∞
     */
     private void Update()
     {
-        if (isStart)
+        if (Input.anyKeyDown) //ÌÇ§ ÏûÖÎ†•Ïãú 
         {
-            inputTimer += Time.deltaTime;
-            nextNoteTimer += Time.deltaTime;
+            GetTimeDifference(); //ÏõêÎûò ÌåêÏ†ïÍ≥ºÏùò Í±∞Î¶¨ Ï∞®Ïù¥ ÎπÑÍµê
         }
-
-        if(nextNoteTimer >= targeTime)
-        {
-            Debug.Log("≥Î∆Æ ≥—æÓ∞®");
-            nextNoteTimer = 0f;
-            GetNextTargetTime();
-        }
-
-        if (Input.anyKeyDown)
-        {
-            timeDifference = GetTimeDifference();
-            Debug.Log(timeDifference);
-            inputTimer = nextNoteTimer;
-        }
-    }
-
-    /*
-     *Update
-     *¿‘∑¬ πﬁ±‚
-     */
-    private void FixedUpdate()
-    {
-
     }
 
     float GetTimeDifference()
     {
-        return targeTime - inputTimer;
+        return 0f;
     }
 
     public float GetTempo()
     {
         return tempo;
-    }
-
-    public void StartTimer()
-    {
-        Debug.Log("≥Î∑° Ω√¿€«’¥œ¥Ÿ");
-        inputTimer = 0f;
-        nextNoteTimer = 0f;
-        isStart = true;
-    }
-
-    void GetNextTargetTime()
-    {
-        noteindex++;
-        //nextNoteBeat = note[noteindex];
-        nextNoteBeat = 2f;
-        targeTime = 60f / tempo * nextNoteBeat;
     }
 
 }

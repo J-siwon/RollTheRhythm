@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class RectWheel : MonoBehaviour
+public class RectWheel : Wheel
 {
 
     public GameObject[] side = new GameObject[4]; // ����, ��, �Ʒ�, �������� ���� ����ϴ� ��
@@ -26,7 +26,7 @@ public class RectWheel : MonoBehaviour
     {
         tempo = GameManager.instance.GetTempo();
         rotationspeed = 60f / tempo;
-        SoundManager.instance.StartBGMAndTimer();
+        SoundManager.instance.StartBGM();
     }
 
     void Update()

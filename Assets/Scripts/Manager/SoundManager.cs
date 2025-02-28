@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    //»ç¿îµå Å¬¸³ ½ÇÇà (¸Å°³º¯¼ö : »ç¿îµå ÀÌ¸§°ú ¿Àµğ¿À Å¬¸³)
+    //ì‚¬ìš´ë“œ í´ë¦½ ì‹¤í–‰ (ë§¤ê°œë³€ìˆ˜ : ì‚¬ìš´ë“œ ì´ë¦„ê³¼ ì˜¤ë””ì˜¤ í´ë¦½)
     public void SFXPlay(string sfxName, AudioClip clip)
     {
         GameObject soundObject = new GameObject(sfxName + "Sound");
@@ -32,21 +32,20 @@ public class SoundManager : MonoBehaviour
         Destroy(audioSource, clip.length);
     }
 
-    public void StartBGMAndTimer()
+    public void StartBGM()
     {
         StartCoroutine(BGMAndTimerCourutine());
     }
     private IEnumerator BGMAndTimerCourutine()
     {
         float tempo = GameManager.instance.GetTempo();
-        // 4¹ÚÀÚ ´ë±â
+        // 4ë°•ì ëŒ€ê¸°
         yield return new WaitForSeconds(60f / tempo * 4f + correction);
 
-        // 4¹ÚÀÚ µÚ¿¡ BGM Àç»ı
+        // 4ë°•ì ë’¤ì— BGM ì¬ìƒ
         bgmAudioSource.Play();
 
-        // GameManagerÀÇ Å¸ÀÌ¸Ó ½ÃÀÛ ¸Ş¼­µå È£Ãâ
-        // ½Ì±ÛÅæ ÆĞÅÏÀ¸·Î Á¢±Ù
-        GameManager.instance.StartTimer();
+        // GameManagerì˜ íƒ€ì´ë¨¸ ì‹œì‘ ë©”ì„œë“œ í˜¸ì¶œ
+        // ì‹±ê¸€í†¤ íŒ¨í„´ìœ¼ë¡œ ì ‘ê·¼
     }
 }

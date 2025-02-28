@@ -22,19 +22,19 @@ public class NoteManager : MonoBehaviour
 
     private GameObject NextNotePrefab;
 
-    public NoteChart noteChart;         // ¿¡µğÅÍ¿¡¼­ ¼Â¾÷ÇÒ ³ëÆ® µ¥ÀÌÅÍ
+    public NoteChart noteChart;         // ì—ë””í„°ì—ì„œ ì…‹ì—…í•  ë…¸íŠ¸ ë°ì´í„°
 
     public Note[] noteDatas;
-    private int currentNoteIndex = 0;    // ÇöÀç ½ºÆùÇØ¾ß ÇÒ ³ëÆ®ÀÇ ÀÎµ¦½º
+    private int currentNoteIndex = 0;    // í˜„ì¬ ìŠ¤í°í•´ì•¼ í•  ë…¸íŠ¸ì˜ ì¸ë±ìŠ¤
 
-    public static NoteManager Instance;  // ½Ì±ÛÅæ
+    public static NoteManager Instance;  // ì‹±ê¸€í†¤
     void Awake()
     {
-        // ½Ì±ÛÅæ ÆĞÅÏ
+        // ì‹±ê¸€í†¤ íŒ¨í„´
         if (Instance == null)
         {
             Instance = this;
-            // DontDestroyOnLoad(gameObject); // ¾À ÀüÈ¯ ½Ã¿¡µµ À¯ÁöÇÏ°í ½Í´Ù¸é
+            // DontDestroyOnLoad(gameObject); // ì”¬ ì „í™˜ ì‹œì—ë„ ìœ ì§€í•˜ê³  ì‹¶ë‹¤ë©´
         }
         else
         {
@@ -45,7 +45,7 @@ public class NoteManager : MonoBehaviour
     private void Start()
     {
         GetNoteData("Note1_1.json");
-        //ÀÓ½Ã·Î ³ëÆ®¸¦ »ı¼º
+        //ì„ì‹œë¡œ ë…¸íŠ¸ë¥¼ ìƒì„±
         for (int i = 0; i < noteDatas.Length; i++)
         {
             SpawnNotePrefab(noteDatas[i]);
@@ -53,7 +53,7 @@ public class NoteManager : MonoBehaviour
     }
     void Update()
     {
-        float currentTime = Time.time; // °ÔÀÓ ½ÃÀÛ ±âÁØÀ¸·Î
+        float currentTime = Time.time; // ê²Œì„ ì‹œì‘ ê¸°ì¤€ìœ¼ë¡œ
 
     }
 
@@ -72,16 +72,16 @@ public class NoteManager : MonoBehaviour
 
     private void SpawnNotePrefab(Note noteData)
     {
-        //noteType¿¡ µû¶ó ´ÙÀ½ ³ëÆ®ÀÇ ÇÁ¸®ÆÕÀ» ¼³Á¤
+        //noteTypeì— ë”°ë¼ ë‹¤ìŒ ë…¸íŠ¸ì˜ í”„ë¦¬íŒ¹ì„ ì„¤ì •
         SetNextNoteType(noteData);
 
-        //Ãß°¡ ·ÎÁ÷ ¿¹: ¼Óµµ, ¹æÇâ, ÀÌÆåÆ® ÃÊ±âÈ­ µî
+        //ì¶”ê°€ ë¡œì§ ì˜ˆ: ì†ë„, ë°©í–¥, ì´í™íŠ¸ ì´ˆê¸°í™” ë“±
         GameObject NoteObject = Instantiate(NextNotePrefab, noteData.spawnPos, Quaternion.identity);
 
         // var noteScript = noteObj.GetComponent<Note>();
         // noteScript.speed = noteData.speed;
 
-        Debug.Log($"³ëÆ® ½ºÆù at {noteData.spawnPos}");
+        Debug.Log($"ë…¸íŠ¸ ìŠ¤í° at {noteData.spawnPos}");
     }
 
     public int GetNoteIndex() { return currentNoteIndex; }
@@ -106,7 +106,7 @@ public class NoteManager : MonoBehaviour
 
     public void GetNoteData(string fileName)
     {
-        //jsonÀ¸·ÎºÎÅÍ noteChart ºÒ·¯¿À±â 
+        //jsonìœ¼ë¡œë¶€í„° noteChart ë¶ˆëŸ¬ì˜¤ê¸° 
         noteChart = DataManager.instance.LoadChartFromJson(fileName);
 
         noteDatas = noteChart.notes;
